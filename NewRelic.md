@@ -34,10 +34,7 @@ Agent log forwarding
 `
 In your system go to newrelic-infra logging folder: ```cd /etc/newrelic-infra/logging.d​```
 
-Create a copy of file.yml.example: 
-```
-cp file.yml.example file.yml​ 
-```
+Create a copy of file.yml.example: ```cp file.yml.example file.yml​ ```
 
 Edit the copied .yml file to have the following configurations: ​ 
 ```
@@ -86,30 +83,30 @@ NRQL Examples
 
 View Infrastructure events in a table view since 11AM till now​​ 
 ```
-NRQL> SELECT * FROM InfrastructureEvent SINCE '11:00' UNTIL now​ 
+NRQL> SELECT * FROM InfrastructureEvent SINCE '11:00' UNTIL now 
 ```
 Get unique count of user sessions for the entire week​​ 
 ```
-NRQL> SELECT uniqueCount(session) FROM PageView SINCE 1 week ago​ 
+NRQL> SELECT uniqueCount(session) FROM PageView SINCE 1 week ago 
 ```
 How many of our infrastructure instances run Linux as main OS? 
 ```
-NRQL> SELECT count(`host.operatingSystem`) FROM Metric WHERE host.operatingSystem = 'linux' SINCE 1 day ago​ 
+NRQL> SELECT count(`host.operatingSystem`) FROM Metric WHERE host.operatingSystem ='linux' SINCE 1 day ago
 ```
 NRQL Practice Answers 
 =====================
 
-What is the unique number of processes (`process.name`) per a user (`process.userName`)? Exclude the root user​ 
+What is the unique number of processes (`process.name`) per a user (`process.userName`)? Exclude the root user​ 
 ```
-NRQL> SELECT uniqueCount(`process.name`) FROM Metric WHERE `process.userName` != 'root' FACET `process.userName` SINCE 8 hours ago​ 
+NRQL>  SELECT uniqueCount(`process.name`) FROM Metric WHERE `process.userName` != 'root' FACET `process.userName` SINCE 8 hours ago​ 
 ```
 Get the 50th, 75th, 99th percentiles of the metric `host.net.transmitPacketsPerSecond` and plot it in a timeseries line chart​ 
 ```
-NRQL> SELECT percentile(`host.net.transmitPacketsPerSecond`, 50, 75, 99) FROM Metric SINCE 8 hours ago TIMESERIES​ 
+NRQL> SELECT percentile(`host.net.transmitPacketsPerSecond`, 50, 75, 99) FROM Metric SINCE 8 hours ago TIMESERIES
 ```
-What is the percentages of nodes used grouped by `host.hostname` and plot it in a timeseries line chart​ 
+What is the percentages of nodes used grouped by `host.hostname` and plot it in a timeseries line chart​ 
 ```
-NRQL> SELECT (max(`host.disk.inodesUsed`)/max(`host.disk.inodesTotal`)) * 100 FROM Metric FACET `host.hostname` SINCE 8 hours ago TIMESERIES​ 
+NRQL> SELECT (max(`host.disk.inodesUsed`)/max(`host.disk.inodesTotal`)) * 100 FROM Metric FACET `host.hostname` SINCE 8 hours ago TIMESERIES
 ```
 
 AWS Integration 
