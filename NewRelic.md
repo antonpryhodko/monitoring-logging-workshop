@@ -112,6 +112,26 @@ NRQL> SELECT (max(`host.disk.inodesUsed`)/max(`host.disk.inodesTotal`)) * 100 FR
 AWS Integration 
 ===============
 
+Go to one.newrelic.com  > Infrastructure > AWS​
+
+From the IAM console, click Create role, then click Another AWS account:​
+
+For Account ID, use ```754728514883```.​
+
+Check the Require external ID box. ​
+
+For External ID, enter your New Relic account ID ​
+
+(Account Settings > API Keys). ​
+
+Do not enable the setting to Require MFA (multi-factor authentication).​
+
+Attach the Policy ```ReadOnlyAccess​```
+
+Name the role name as ```NewRelicInfrastructure-Integrations​```
+
+​
+
 Permission Statement for AWS Policy 
 ```
 {​ 
