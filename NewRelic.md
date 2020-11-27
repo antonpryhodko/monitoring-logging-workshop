@@ -16,22 +16,28 @@ echo "license_key: YOUR_LICENSE_KEY" | sudo tee -a /etc/newrelic-infra.yml
 
 cat /etc/os-release 
 
-sudo curl -o /etc/yum.repos.d/newrelic-infra.repo https://download.newrelic.com/infrastructure_agent/linux/yum/el/7/x86_64/newrelic-infra.repo 
+sudo curl -o /etc/yum.repos.d/newrelic-infra.repo https://download.newrelic.com/infrastructure_agent/linux/yum/el/7/x86_64/newrelic-infra.repo
 
-sudo yum -q makecache -y --disablerepo='*' --enablerepo='newrelic-infra' 
+sudo yum -q makecache -y --disablerepo='*' --enablerepo='newrelic-infra'
 
-sudo yum install newrelic-infra -y 
+sudo yum install newrelic-infra -y
 
-sudo systemctl status newrelic-infra 
+
+sudo systemctl start newrelic-infra.service​
+
+sudo systemctl status newrelic-infra.service​
 ```
  
 
 Agent log forwarding
 ==================== 
+`
+In your system go to newrelic-infra logging folder: ```cd /etc/newrelic-infra/logging.d​```
 
-In your system go to newrelic-infra logging folder: cd /etc/newrelic-infra/logging.d​ 
-
-Create a copy of file.yml.example: cp file.yml.example file.yml​ 
+Create a copy of file.yml.example: 
+```
+cp file.yml.example file.yml​ 
+```
 
 Edit the copied .yml file to have the following configurations: ​ 
 ```
@@ -54,22 +60,22 @@ logs:​
 Get the agent logs into New Relic 
 ==================================
 Enable logging by editing /etc/newrelic-infra.yml​ 
-
+```
 license_key: <license key>​ 
 
 log_file: /var/log/newrelic-logs.log​ 
-
+```
 Restart the agent using systemctl​ 
-
-sudo systemctl restart newrelic-infra​ 
-
+```
+sudo systemctl restart newrelic-infra​.service
+```
  
 
 Create alert for DiskFreePercent
 ================================ 
 
 ```
-NRQL> SELECT max(`host.disk.freePercent`) FROM Metric 
+NRQL> SELECT max(`host.disk.usedPercent`) FROM Metric 
 ```
 ​ 
 
@@ -88,7 +94,7 @@ NRQL> SELECT uniqueCount(session) FROM PageView SINCE 1 week ago�
 ```
 How many of our infrastructure instances run Linux as main OS? 
 ```
-NRQL> SELECT count(`host.operatingSystem`) FROM Metric WHERE `host.operatingSystem` = 'linux’ SINCE 1 day ago​ 
+NRQL> SELECT count(`host.operatingSystem`) FROM Metric WHERE host.operatingSystem = 'linux' SINCE 1 day ago​ 
 ```
 NRQL Practice Answers 
 =====================
@@ -103,7 +109,7 @@ NRQL> SELECT percentile(`host.net.transmitPacketsPerSecond`, 50, 75, 99) F
 ```
 What is the percentages of nodes used grouped by `host.hostname` and plot it in a timeseries line chart​ 
 ```
-NRQL> SELECT (max(`host.disk.inodesUsed`)/max(`host.disk.inodesTotal`)) * 100 FROM Metric FACE `host.hostname` SINCE 8 hours ago TIMESERIES​ 
+NRQL> SELECT (max(`host.disk.inodesUsed`)/max(`host.disk.inodesTotal`)) * 100 FROM Metric FACET `host.hostname` SINCE 8 hours ago TIMESERIES​ 
 ```
 
 AWS Integration 
