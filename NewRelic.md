@@ -93,21 +93,7 @@ How many of our infrastructure instances run Linux as main OS?
 ```
 NRQL> SELECT count(`host.operatingSystem`) FROM Metric WHERE host.operatingSystem ='linux' SINCE 1 day ago
 ```
-NRQL Practice Answers 
-=====================
 
-What is the unique number of processes (`process.name`) per a user (`process.userName`)? Exclude the root user​ 
-```
-NRQL>  SELECT uniqueCount(`process.name`) FROM Metric WHERE `process.userName` != 'root' FACET `process.userName` SINCE 8 hours ago​ 
-```
-Get the 50th, 75th, 99th percentiles of the metric `host.net.transmitPacketsPerSecond` and plot it in a timeseries line chart​ 
-```
-NRQL> SELECT percentile(`host.net.transmitPacketsPerSecond`, 50, 75, 99) FROM Metric SINCE 8 hours ago TIMESERIES
-```
-What is the percentages of nodes used grouped by `host.hostname` and plot it in a timeseries line chart​ 
-```
-NRQL> SELECT (max(`host.disk.inodesUsed`)/max(`host.disk.inodesTotal`)) * 100 FROM Metric FACET `host.hostname` SINCE 8 hours ago TIMESERIES
-```
 
 AWS Integration 
 ===============
