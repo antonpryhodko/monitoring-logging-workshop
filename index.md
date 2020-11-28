@@ -9,8 +9,8 @@ Agenda:  
 - NewRealic as enterprise solution of Application performance monitoring   
 - Splunk Cloud-based service and log management 
 
-[NewRelic](NewRelic.html)
+[NewRelic](https://antonpryhodko.github.io/monitoring-logging-workshop/NewRelic.html)
 
-[Splunk](Splunk.html)
+[Splunk](https://antonpryhodko.github.io/monitoring-logging-workshop/Splunk.html)
 
-[Vagrantfile](Vagrantfile)
+[Vagrantfile](https://antonpryhodko.github.io/monitoring-logging-workshop/Vagrantfile)
