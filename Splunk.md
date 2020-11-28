@@ -1,6 +1,11 @@
+---
+layout: default
+title: Splunk
+---
 Registration Splunk Cloud instance
 ==================================
 [Registration](https://www.splunk.com/page/sign_up/cloud_trial?redirecturl=/getsplunk/cloud_trial)
+
 [Go to Instance page](https://splunkcommunities.force.com/customers/apex/RMEC_InstancePage)
 
 
@@ -75,11 +80,13 @@ sudo yum install nginx
 sudo service nginx start
 ```
 2. Add New Splunk monitors to forwarder for nginx logs
+
 ```
 sudo ./bin/splunk add monitor /var/log/nginx/access.log -index nginx -sourcetype nginx:access
 sudo ./bin/splunk add monitor /var/log/nginx/error.log -index nginx -sourcetype nginx:error
 ```
 3. Install jenkins
+
 ```
 sudo wget -O /etc/yum.repos.d/jenkins.repo \
     https://pkg.jenkins.io/redhat-stable/jenkins.repo
@@ -87,8 +94,8 @@ sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 sudo yum install jenkins java-1.8.0-openjdk-devel
 sudo systemctl daemon-reload
 sudo systemctl start jenkins
-
 ```
+
 3. Add New Splunk monitors to forwarder for jenkins logs
 
 ```
@@ -115,27 +122,33 @@ SPL
 ===
 1. Field-value pair matching
 This example shows field-value pair matching for specific values of source IP (src) and destination IP (dst).
+
 ```
 search src="10.9.165.*" OR dst="10.9.165.8"
 ```
+
 2. Using boolean and comparison operators
 This example shows field-value pair matching with boolean and comparison operators. This example searches for events with code values of either 10, 29, or 43 and any host that is not "localhost", and an xqp value that is greater than 5.
+
 ```
 search (code=10 OR code=29 OR code=43) host!="localhost" xqp>5
 ```
 
 An alternative is to use the IN operator, because you are specifying multiple field-value pairs on the same field. The revised search is:
+
 ```
 search code IN(10, 29, 43) host!="localhost" xqp>5
 ```
 
 3. Using wildcards
 This example shows field-value pair matching with wildcards. This example searches for events from all of the web servers that have an HTTP client and server error status.
+
 ```
 search host=webserver* (status=4* OR status=5*)
 ```
 
 An alternative is to use the IN operator, because you are specifying two field-value pairs on the same field. The revised search is:
+
 ```
 search host=webserver* status IN(4*, 5*)
 ```
@@ -163,6 +176,7 @@ search fieldA!="value2"
 ```
 
 If you use a wildcard for the value, NOT fieldA=* returns events where fieldA is null or undefined, and fieldA!=* never returns any events.
+
 
 Visualisation and dashboarding
 =========================================
