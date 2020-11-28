@@ -9,8 +9,8 @@ Agenda:  
 - NewRealic as enterprise solution of Application performance monitoring   
 - Splunk Cloud-based service and log management 
 
-[NewRelic](/NewRelic.html)
+[NewRelic](NewRelic.html)
 
-[Splunk](/Splunk.html)
+[Splunk](Splunk.html)
 
-[Vagrantfile](/Vagrantfile)
+[Vagrantfile](Vagrantfile)
