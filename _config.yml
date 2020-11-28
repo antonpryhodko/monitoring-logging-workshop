@@ -15,8 +15,8 @@
 # in the templates via {{ site.myvariable }}.
 title: Workshop. Monitoring & Centralized logging
 
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "monitoring-logging-workshop" # the subpath of your site, e.g. /blog
+url: "https://antonpryhodko.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 markdown: kramdown
