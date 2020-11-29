@@ -120,6 +120,7 @@ Link your AWS Account to New Relic
 
 5. Add Inline Policy with the following permission statement: 
 ```
+
 {
   "Statement": [
     {
@@ -132,4 +133,5 @@ Link your AWS Account to New Relic
   ],
   "Version": "2012-10-17"
 }
+
 ```
