@@ -119,8 +119,9 @@ Link your AWS Account to New Relic
 4. Name the role name as ```NewRelicInfrastructure-Integrations​```
 
 5. Add Inline Policy with the following permission statement: 
+ 
 ```
-
+ 
 {
   "Statement": [
     {
@@ -133,5 +134,5 @@ Link your AWS Account to New Relic
   ],
   "Version": "2012-10-17"
 }
-
+ 
 ```
