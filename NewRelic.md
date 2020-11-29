@@ -116,27 +116,16 @@ Link your AWS Account to New Relic
 
 5. Add Inline Policy with the following permission statement: 
 ```
-{​
-
-  "Version": "2012-10-17",​
-
-  "Statement": [​
-
-    {​
-
-      "Effect": "Allow",​
-
-      "Action": [​
-
-        "budgets:ViewBudget"​
-
-      ],​
-
-      "Resource": "*"​
-
-    }​
-
-  ]​
-
-}​
+{
+  "Statement": [
+    {
+      "Action": [
+        "budgets:ViewBudget"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ],
+  "Version": "2012-10-17"
+}
 ```
